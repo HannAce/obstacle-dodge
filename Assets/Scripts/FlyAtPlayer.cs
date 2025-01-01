@@ -16,19 +16,19 @@ public class FlyAtPlayer : MonoBehaviour
     void Update()
     {
         MoveToPlayer();
+        DestroySelf();
     }
 
     private void MoveToPlayer()
     {
         transform.position = Vector3.MoveTowards(transform.position, playerPos, projectileSpeed * Time.deltaTime);
-        if (transform.position == playerPos)
-        {
-            DestroySelf();
-        }
     }
 
     private void DestroySelf()
     {
-        Destroy(gameObject);
+        if (transform.position == playerPos)
+        {
+            Destroy(gameObject);
+        }
     }
 }
