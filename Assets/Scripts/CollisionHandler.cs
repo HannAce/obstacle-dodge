@@ -15,6 +15,7 @@ public class CollisionHandler : MonoBehaviour
         if (other.gameObject.CompareTag("Player"))
         {
             meshRenderer.material.color = Color.red;
+            gameObject.tag = "Hit";
         }
     }
 
