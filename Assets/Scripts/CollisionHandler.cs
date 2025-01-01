@@ -3,15 +3,26 @@ using UnityEngine;
 
 public class CollisionHandler : MonoBehaviour
 {
-    private MeshRenderer meshRenderer;
+    [SerializeField] private MeshRenderer meshRenderer;
     
     private void Start()
     {
-        meshRenderer = GetComponent<MeshRenderer>();
+        
     }
 
     private void OnCollisionEnter(Collision other)
     {
-        meshRenderer.material.color = Color.red;
+        if (other.gameObject.CompareTag("Player"))
+        {
+            meshRenderer.material.color = Color.red;
+        }
+    }
+
+    private void OnValidate()
+    {
+        if (meshRenderer == null)
+        {
+            meshRenderer = GetComponent<MeshRenderer>();
+        }
     }
 }
