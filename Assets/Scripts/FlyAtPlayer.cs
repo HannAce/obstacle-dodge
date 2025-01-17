@@ -1,3 +1,4 @@
+using System;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -7,10 +8,15 @@ public class FlyAtPlayer : MonoBehaviour
     private Vector3 playerPos;
     
     [SerializeField] private float projectileSpeed;
-    
-    void Start()
+
+    private void Awake()
     {
-       playerPos = player.transform.position; 
+        gameObject.SetActive(false);
+    }
+
+    void Start()
+    { 
+        playerPos = player.transform.position; 
     }
     
     void Update()
